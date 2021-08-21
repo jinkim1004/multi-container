@@ -16,7 +16,7 @@ after_success:
   - docker build -t jinkim1004/multi-server ./server
   - docker build -t jinkim1004/multi-worker ./worker
 # login to docker hub
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --passwrd-stdin docker.io
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin docker.io
   - docker push jinkim1004/multi-client
   - docker push jinkim1004/multi-nginx
   - docker push jinkim1004/multi-server
