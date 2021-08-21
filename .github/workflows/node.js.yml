@@ -2,9 +2,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
  
 jobs:
   setup-build-publish-deploy:
@@ -34,7 +34,7 @@ jobs:
         docker push jinkim1004/multi-server
         docker push jinkim1004/multi-worker
 
-        
+
   
  
    
