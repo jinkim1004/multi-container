@@ -1,38 +1,38 @@
-name: Node.js CI
+# name: Node.js CI
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+# on:
+#   push:
+#     branches: [ main ]
+#   pull_request:
+#     branches: [ main ]
  
-jobs:
-  setup-build-publish-deploy:
-    name: Setup, Build, Publish, and Deploy
-    runs-on: self-hosted
-    environment: production
-    steps:
+# jobs:
+#   setup-build-publish-deploy:
+#     name: Setup, Build, Publish, and Deploy
+#     runs-on: self-hosted
+#     environment: production
+#     steps:
 
-    - name: Checkout
-      uses: actions/checkout@v2
+#     - name: Checkout
+#       uses: actions/checkout@v2
       
-    # Build
-    - name: Build Client image
-      run: docker build -t jinkim1004/multi-client ./client
-    - name: Build Nginx image
-      run: docker build -t jinkim1004/multi-nginx ./nginx
-    - name: Build Server image
-      run: docker build -t jinkim1004/multi-server ./server
-    - name: Build Worker image
-      run: docker build -t jinkim1004/multi-worker ./worker
-    - name: Docker Login
-      run:  echo "${{secrets.DOCKER_PASSWORD}}" | docker login -u "${{secrets.DOCKER_ID}}" --password-stdin docker.io
-    - name: Docker image push
-      run: |
-        docker push jinkim1004/multi-client
-        docker push jinkim1004/multi-nginx
-        docker push jinkim1004/multi-server
-        docker push jinkim1004/multi-worker
+#     # Build
+#     - name: Build Client image
+#       run: docker build -t jinkim1004/multi-client ./client
+#     - name: Build Nginx image
+#       run: docker build -t jinkim1004/multi-nginx ./nginx
+#     - name: Build Server image
+#       run: docker build -t jinkim1004/multi-server ./server
+#     - name: Build Worker image
+#       run: docker build -t jinkim1004/multi-worker ./worker
+#     - name: Docker Login
+#       run:  echo "${{secrets.DOCKER_PASSWORD}}" | docker login -u "${{secrets.DOCKER_ID}}" --password-stdin docker.io
+#     - name: Docker image push
+#       run: |
+#         docker push jinkim1004/multi-client
+#         docker push jinkim1004/multi-nginx
+#         docker push jinkim1004/multi-server
+#         docker push jinkim1004/multi-worker
 
 
   
