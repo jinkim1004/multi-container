@@ -1,0 +1,38 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+ 
+jobs:
+  setup-build-publish-deploy:
+    name: Setup, Build, Publish, and Deploy
+    runs-on: self-hosted
+    environment: production
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v2
+      
+    # Build
+    - name: Build Client image
+      run: docker build -t jinkim1004/multi-client ./client
+    - name: Build Nginx image
+      run: docker build -t jinkim1004/multi-nginx ./nginx
+    - name: Build Server image
+      run: docker build -t jinkim1004/multi-server ./server
+    - name: Build Worker image
+      run: docker build -t jinkim1004/multi-workder ./worker
+    - name: Docker Login
+      run:  echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin docker.io
+    - name: Docker image push
+      run: |
+        docker push jinkim1004/multi-client
+        docker push jinkim1004/multi-nginx
+        docker push jinkim1004/multi-server
+        docker push jinkim1004/multi-worker
+  
+ 
+   
