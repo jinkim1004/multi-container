@@ -26,7 +26,7 @@ jobs:
     - name: Build Worker image
       run: docker build -t jinkim1004/multi-workder ./worker
     - name: Docker Login
-      run:  echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin docker.io
+      run:  echo "${{secrets.DOCKER_PASSWORD}}" | docker login -u "${{secrets.DOCKER_ID}}" --password-stdin docker.io
     - name: Docker image push
       run: |
         docker push jinkim1004/multi-client
