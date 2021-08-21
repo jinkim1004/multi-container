@@ -33,6 +33,8 @@ jobs:
         docker push jinkim1004/multi-nginx
         docker push jinkim1004/multi-server
         docker push jinkim1004/multi-worker
+
+        
   
  
    
