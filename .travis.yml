@@ -19,14 +19,14 @@ after_success:
   - docker push jinkim1004/multi-nginx
   - docker push jinkim1004/multi-server
   - docker push jinkim1004/multi-worker
-deploy:
-  provider: elasticbeanstalk
-  region: "us-east-1"
-  app: "multi-docker"
-  env: "MultiDocker-env"
-  bucket_name: "elasticbeanstalk-us-east-1-473365992405"
-  bucket_path: "multi-docker"
-  on:
-    branch: main
-  access_key_id: $AWS_ACCESS_KEY
-  secure_access_key: $AWS_SECRET_KEY
+# deploy:
+#   provider: elasticbeanstalk
+#   region: "us-east-1"
+#   app: "multi-docker"
+#   env: "MultiDocker-env"
+#   bucket_name: "elasticbeanstalk-us-east-1-473365992405"
+#   bucket_path: "multi-docker"
+#   on:
+#     branch: main
+#   access_key_id: $AWS_ACCESS_KEY
+#   secure_access_key: $AWS_SECRET_KEY
